@@ -1,5 +1,4 @@
 // Back-end Function
-
 //Player Object
 function Player(name) {
   this.name = name,
@@ -24,6 +23,20 @@ Player.prototype.rollDie = function(roll) {
   }
 }
 
+//player can click hold
+Player.prototype.hold = function() {
+  //round score is added to total score
+  var store = this.roundScore;
+  this.gameScore += store;
+  this.roundScore = 0;
+  //turn ends
+  if (newGame.currentPlayer.gameScore >= 20){
+    console.log("You Won!");
+  } else {
+    newGame.SwitchPlayer();
+  }
+}
+
 //Game Object
 //2 players
 function Game() {
@@ -44,19 +57,6 @@ Game.prototype.SwitchPlayer = function() {
   }
 }
 
-//player can click hold
-Player.prototype.hold = function() {
-  //round score is added to total score
-  var store = this.roundScore;
-  this.gameScore += store;
-  this.roundScore = 0;
-  //turn ends
-  if (newGame.currentPlayer.gameScore >= 20){
-    console.log("You Won!");
-  } else {
-  newGame.SwitchPlayer();
-}
-}
 
 //UI function
 $(document).ready(function(){
