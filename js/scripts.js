@@ -6,6 +6,7 @@ function Player(name) {
   this.gameScore = 0,
   this.roundScore = 0
 }
+var newGame = new Game()
 //player clicks roll dice
 //Die returns a random number between 1 and 6
 Player.prototype.rollDie = function(roll) {
@@ -16,7 +17,7 @@ Player.prototype.rollDie = function(roll) {
     //round score goes to zero
     this.roundScore = 0;
     //turn ends
-    Game.SwitchPlayer();
+    newGame.SwitchPlayer();
   } else {
     //That number is added to their round score
     this.roundScore += roll;
@@ -25,20 +26,21 @@ Player.prototype.rollDie = function(roll) {
 
 //Game Object
 //2 players
-function Game(player1, player2) {
+function Game() {
   var player1 = new Player("player1");
   var player2 = new Player("player2");
-  this.currentPlayer = player1;
+  this.player1 = player1;
+  this.player2 = player2;
+  this.currentPlayer = this.player1;
   console.log(this.currentPlayer);
   //The game has a max score
-  this.maxScore = 20
 }
 //turn ends
 Game.prototype.SwitchPlayer = function() {
-  if (this.currentPlayer === player1) {
-  this.currentPlayer = player2
-  } else if (this.currentPlayer === player2) {
-  this.currentPlayer = player1
+  if (this.currentPlayer === this.player1) {
+  this.currentPlayer = this.player2;
+  } else if (this.currentPlayer === this.player2) {
+  this.currentPlayer = this.player1;
   }
 }
 
@@ -48,7 +50,12 @@ Player.prototype.hold = function() {
   var store = this.roundScore;
   this.gameScore += store;
   this.roundScore = 0;
-  Game.SwitchPlayer();
+  //turn ends
+  if (newGame.currentPlayer.gameScore >= 20){
+    console.log("You Won!");
+  } else {
+  newGame.SwitchPlayer();
+}
 }
 
 //UI function
