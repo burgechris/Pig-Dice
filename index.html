@@ -9,11 +9,38 @@
     <title>Pig Dice</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h1>Pig Dice!</h1>
+    </div>
     <div class="container">
-      <form class="pigDice" action="index.html" method="post">
-        <button id="roll" type="submit" name="roll">Roll</button>
-        <button type="button" name="button">Hold</button>
+      <form class="form-group" action="index.html" method="post">
+        <label for="player1">Type your name!</label>
+        <input type="text" class="form-control" id="player1Name" placeholder="Player1" value="">
+        <br>
+        <label for="player2">Type your name!</label>
+        <input type="text"  class="form-control" id="player2Name" placeholder="Player2" value="">
+        <br>
+        <button id="newGame" class="btn-info" type="button" name="new">New Game</button>
+        <button id="roll" class="btn-info" type="button" name="roll">Roll</button>
+        <button id="hold" class="btn-info" type="button" name="Hold">Hold</button>
+        <button id="refresh" class="btn-info" type="button" name="refresh">Refresh</button>
       </form>
+      <div class="row">
+        <div class="col playerDisplay">
+          <h3 id="player1name"></h3>
+          <h4>Total Score</h4>
+          <p id="player1"></p>
+        </div>
+        <div class="col playerDisplay ">
+          <h3 id="player2name"></h3>
+          <h4>Total Score</h4>
+          <p id="player2"></p>
+        </div>
+      </div>
+      <div class="row" id="roundScore">
+        <center><h4>Round Score</h4></center>
+        <p><span id="round"></span></p>
+      </div>
     </div>
   </body>
 </html>

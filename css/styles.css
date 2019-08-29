@@ -1,0 +1,22 @@
+.jumbotron {
+  display: block;
+  width: auto;
+  border: 15px;
+  padding: 50px;
+  margin: 20px;
+  text-align: center;
+}
+
+.playerDisplay {
+  width: 45%;
+  text-align: center;
+}
+
+#roundScore {
+  display: block;
+  text-align: center;
+}
+
+p {
+  font-size: 80px;
+}

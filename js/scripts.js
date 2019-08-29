@@ -5,37 +5,37 @@ function Player(name) {
   this.gameScore = 0,
   this.roundScore = 0
 }
-var newGame = new Game()
 //player clicks roll dice
 //Die returns a random number between 1 and 6
-Player.prototype.rollDie = function(roll) {
+Game.prototype.rollDie = function() {
   var roll = Math.floor(Math.random() * 6) + 1;
   console.log(roll);
   //player rolls a 1
   if (roll === 1) {
     //round score goes to zero
-    this.roundScore = 0;
+    this.currentPlayer.roundScore = 0;
     //turn ends
-    newGame.SwitchPlayer();
+    this.switchPlayer();
+    alert(this.currentPlayer.name)
   } else {
     //That number is added to their round score
-    this.roundScore += roll;
+    this.currentPlayer.roundScore += roll;
   }
 }
 
 //player can click hold
-Player.prototype.hold = function() {
+Game.prototype.hold = function() {
   //round score is added to total score
-  var store = this.roundScore;
-  this.gameScore += store;
-  this.roundScore = 0;
+  this.currentPlayer.gameScore += this.currentPlayer.roundScore;
+  this.currentPlayer.roundScore = 0;
+  console.log(this.currentPlayer.name);
   //turn ends
-  if (newGame.currentPlayer.gameScore >= 20){
-    console.log("You Won!");
-  } else {
-    newGame.SwitchPlayer();
+  if (this.currentPlayer.gameScore >= 100){
+    alert(player1 + " Won!");
   }
 }
+
+
 
 //Game Object
 //2 players
@@ -45,11 +45,10 @@ function Game() {
   this.player1 = player1;
   this.player2 = player2;
   this.currentPlayer = this.player1;
-  console.log(this.currentPlayer);
   //The game has a max score
 }
 //turn ends
-Game.prototype.SwitchPlayer = function() {
+Game.prototype.switchPlayer = function() {
   if (this.currentPlayer === this.player1) {
   this.currentPlayer = this.player2;
   } else if (this.currentPlayer === this.player2) {
@@ -59,12 +58,26 @@ Game.prototype.SwitchPlayer = function() {
 
 
 //UI function
-$(document).ready(function(){
-  $(".pigDice#roll").submit(function(event){
-    // var newPlayer = new Player("steve");
-    // var rollDice = Player.rollDie();
-    event.preventDefault();
 
+$(document).ready(function(){
+  var game = new Game();
+  $("#newGame").click(function(event){
+    event.preventDefault();
+    var player1 = new Player($("input#player1Name").val());
+    var player2 = new Player($("input#player2Name").val());
+
+    $("#player1name").text(player1.name);
+    $("#player2name").text(player2.name);
+  });
+  $("#roll").click(function(){
+    game.rollDie();
+    $("#round").text(game.currentPlayer.roundScore)
+  });
+  $("#hold").click(function(){
+    game.hold();
+    $("#round").text(game.currentPlayer.roundScore);
+    $("#" + game.currentPlayer.name).text(game.currentPlayer.gameScore);
+    game.switchPlayer();
 
   });
 });
