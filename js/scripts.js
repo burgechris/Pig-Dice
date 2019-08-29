@@ -31,8 +31,12 @@ Game.prototype.hold = function() {
   console.log(this.currentPlayer.name);
   //turn ends
   if (this.currentPlayer.gameScore >= 100){
-    alert(player1 + " Won!");
+    displayWinner(this.currentPlayer.name);
   }
+}
+
+function displayWinner(winner){
+  alert($("#" + winner + "name").text() + " wins!");
 }
 
 

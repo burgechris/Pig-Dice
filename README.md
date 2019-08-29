@@ -2,10 +2,15 @@
 
 #### Web application that takes user input and returns a string, 8-23-2019
 
-#### By Christopher Burge & Erin Deuel
+#### By Christopher Burge & Dominique Youmans
 
 ## Description
 
+## This application is a re-creation of the classic game 'Pig Dice'.  Each turn, a player repeatedly rolls a dice until either a 1 is rolled or the player decides to "hold":
+
+##If the player rolls any other number, it is added to their turn total and the player's turn continues.
+##If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
+##The first player to score 100 or more points wins.
 
 
 ## Setup/Installation Requirements
