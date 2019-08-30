@@ -1,6 +1,6 @@
 # Pig Dice
 
-#### Web application that takes user input and returns a string, 8-23-2019
+#### Web application allows two users to play a friend game of chance and strategy, 8-28-2019
 
 #### By Christopher Burge & Dominique Youmans
 
@@ -15,9 +15,9 @@
 
 ## Setup/Installation Requirements
 
-*
-*
-*
+* Navigate to website
+* Type in name(s) in player1/player2 fields
+* Click New Game to start a new Game
 
 ## Specs
 | Behavior | Input | Output |
@@ -32,7 +32,7 @@
 
 
 ## Known Bugs
-
+  - The only known bugs are in the scoring. Working on those. The alert could use a bit more personalization.
 
 
 
@@ -40,4 +40,4 @@
 
 JavaScript and JQuery
 
-Copyright (c) 2019 **Christopher Burge & Erin Deuel**
+Copyright (c) 2019 **Christopher Burge & Dominique Youmans**

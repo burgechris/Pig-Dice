@@ -16,7 +16,7 @@ Game.prototype.rollDie = function() {
     this.currentPlayer.roundScore = 0;
     //turn ends
     this.switchPlayer();
-    alert(this.currentPlayer.name)
+    alert("#" + winner + "name")
   } else {
     //That number is added to their round score
     this.currentPlayer.roundScore += roll;
@@ -30,6 +30,7 @@ Game.prototype.hold = function() {
   this.currentPlayer.roundScore = 0;
   console.log(this.currentPlayer.name);
   //turn ends
+  //The game has a max score
   if (this.currentPlayer.gameScore >= 100){
     displayWinner(this.currentPlayer.name);
   }
@@ -49,7 +50,6 @@ function Game() {
   this.player1 = player1;
   this.player2 = player2;
   this.currentPlayer = this.player1;
-  //The game has a max score
 }
 //turn ends
 Game.prototype.switchPlayer = function() {
