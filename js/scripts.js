@@ -9,14 +9,13 @@ function Player(name) {
 //Die returns a random number between 1 and 6
 Game.prototype.rollDie = function() {
   var roll = Math.floor(Math.random() * 6) + 1;
-  console.log(roll);
   //player rolls a 1
   if (roll === 1) {
     //round score goes to zero
     this.currentPlayer.roundScore = 0;
     //turn ends
     this.switchPlayer();
-    alert("#" + winner + "name")
+    displayTurn(this.currentPlayer.name)
   } else {
     //That number is added to their round score
     this.currentPlayer.roundScore += roll;
@@ -28,7 +27,6 @@ Game.prototype.hold = function() {
   //round score is added to total score
   this.currentPlayer.gameScore += this.currentPlayer.roundScore;
   this.currentPlayer.roundScore = 0;
-  console.log(this.currentPlayer.name);
   //turn ends
   //The game has a max score
   if (this.currentPlayer.gameScore >= 100){
@@ -38,6 +36,10 @@ Game.prototype.hold = function() {
 
 function displayWinner(winner){
   alert($("#" + winner + "name").text() + " wins!");
+}
+
+function displayTurn(playTurn){
+  alert($("#" + playTurn + "name").text() + "'s turn!'")
 }
 
 
@@ -51,6 +53,7 @@ function Game() {
   this.player2 = player2;
   this.currentPlayer = this.player1;
 }
+
 //turn ends
 Game.prototype.switchPlayer = function() {
   if (this.currentPlayer === this.player1) {
@@ -59,7 +62,6 @@ Game.prototype.switchPlayer = function() {
   this.currentPlayer = this.player1;
   }
 }
-
 
 //UI function
 
